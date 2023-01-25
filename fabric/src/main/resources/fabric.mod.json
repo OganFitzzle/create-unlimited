@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "notrainlimits",
   "version": "${version}",
-  "name": "Example Mod",
+  "name": "Create NTL",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Me!"
+    "rdh"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -16,12 +16,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "net.rdh.notrainlimits.fabric.NoTrainLimitsFabric"
     ]
   },
   "mixins": [
-    "examplemod.mixins.json",
-    "examplemod-common.mixins.json"
+    "notrainlimits.mixins.json"
   ],
   "depends": {
     "minecraft": "${minecraft_version}",

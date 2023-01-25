@@ -1,11 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.examplemod.mixin.forge",
+  "package": "net.rdh.notrainlimits.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
   ],
   "mixins": [
+    "TrackPlacementMixin",
+    "PlacementInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1
