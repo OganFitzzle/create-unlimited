@@ -5,10 +5,12 @@ import com.simibubi.create.content.logistics.trains.track.TrackPlacement.Placeme
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 /**
- * A simple mixin to get the message of a PlacementInfo object.
+ * A simple mixin to access the fields of a PlacementInfo object.
  */
 @Mixin(PlacementInfo.class)
 public interface PlacementInfoMixin {
     @Accessor
     String getMessage();
+    @Accessor
+    void setValid(boolean isValid);
 }

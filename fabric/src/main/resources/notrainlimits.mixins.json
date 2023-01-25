@@ -6,6 +6,8 @@
   "client": [
   ],
   "mixins": [
+    "TrackPlacementMixin",
+    "PlacementInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1

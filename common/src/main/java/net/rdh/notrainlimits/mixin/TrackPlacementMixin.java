@@ -16,30 +16,31 @@ public class TrackPlacementMixin {
 
     @Redirect(method = "tryConnect", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;withMessage(Ljava/lang/String;)Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;"))
     private static PlacementInfo messageChecker(PlacementInfo instance, String message) {
-        NoTrainLimits.LOGGER.info("Checking message for checker: {}", message);
         if(willCrash(message))
-            return instance.tooJumbly();
-        NoTrainLimits.LOGGER.info("message not in crash list");
-        if(contains(message))
+            return instance.withMessage(message).tooJumbly();
+        if(contains(message)) {
+            ((PlacementInfoMixin)instance).setValid(true);
             return instance;
-        NoTrainLimits.LOGGER.info("message not in ignore list");
+        }
         return instance.withMessage(message);
     }
 
     @Redirect(method = "tryConnect", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;tooJumbly()Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;"))
     private static PlacementInfo unJumblier(PlacementInfo instance) {
-        NoTrainLimits.LOGGER.info("Checking message for unjumbler: {}", ((PlacementInfoMixin)instance).getMessage());
         if(contains(((PlacementInfoMixin)instance).getMessage()))
             return instance;
         return instance.tooJumbly();
     }
 
     private static boolean contains(String message) {
+        if(message == null) return false;
         for(String s : messagesToIgnore)
             if(message.equals(s) || s.equals("track." + message)) return true;
         return false;
     }
+
     private static boolean willCrash(String message) {
+        if(message == null) return false;
         for(String s : crashMessages)
             if(message.equals(s) || s.equals("track." + message)) return true;
         return false;
