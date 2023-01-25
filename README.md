@@ -4,3 +4,4 @@ This mod removes the limitations on the placement of train tracks using the Crea
 
 NTL is currently in development and is not yet ready for release. (meaning it doesn't work yet)
 
+It is required only on the server (i think).
