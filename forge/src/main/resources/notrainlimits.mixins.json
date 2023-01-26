@@ -1,11 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.rdh.notrainlimits.mixin.forge",
+  "package": "net.rdh.notrainlimits.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
   ],
   "mixins": [
+    "TrackBlockItemMixin",
+    "PlacementInfoAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
