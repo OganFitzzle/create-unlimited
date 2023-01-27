@@ -31,15 +31,17 @@ import static com.simibubi.create.content.logistics.trains.track.TrackPlacement.
 
 @Mixin(TrackBlockItem.class)
 public class TrackBlockItemMixin {
+    @SuppressWarnings({"Duplicates", "CommentedOutCode"})
     @Redirect(method = "useOn", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement;tryConnect(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;ZZ)Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;"))
     private PlacementInfo redirectUseOn(Level level, Player player, BlockPos pos2, BlockState state2,
                                         ItemStack stack, boolean girder, boolean maximiseTurn) {
+        NoTrainLimits.LOGGER.info("Method Called!");
         Vec3 lookVec = player.getLookAngle();
         int lookAngle = (int) (22.5 + AngleHelper.deg(Mth.atan2(lookVec.z, lookVec.x)) % 360) / 8;
 
-        if (level.isClientSide && cached != null && pos2.equals(TrackPlacementAccessor.getHoveringPos()) && stack.equals(TrackPlacementAccessor.getLastItem())
-                && TrackPlacementAccessor.getHoveringMaxed() == maximiseTurn && lookAngle == TrackPlacementAccessor.getHoveringAngle())
-            return cached;
+//        if (level.isClientSide && cached != null && pos2.equals(TrackPlacementAccessor.getHoveringPos()) && stack.equals(TrackPlacementAccessor.getLastItem())
+//                && TrackPlacementAccessor.getHoveringMaxed() == maximiseTurn && lookAngle == TrackPlacementAccessor.getHoveringAngle())
+//            return cached;
 
         PlacementInfo info = new PlacementInfo();
         TrackPlacementAccessor.setHoveringMaxed(maximiseTurn);
@@ -78,7 +80,7 @@ public class TrackBlockItemMixin {
 
         if (pos1.equals(pos2))
             return info.withMessage("second_point");
-        if (pos1.distSqr(pos2) > 32 * 32)
+        if (pos1.distSqr(pos2) > 128 * 128)
             return info.withMessage("too_far")
                     .tooJumbly();
         if (!state1.hasProperty(TrackBlock.HAS_TE))

@@ -36,7 +36,7 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive = false }
 
     // dependencies
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
+    //modImplementation("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
 
     // Create - dependencies are added transitively
     modImplementation("com.simibubi.create:create-fabric-${minecraft_version}:${create_fabric_version}")
@@ -64,10 +64,11 @@ dependencies {
 
 processResources {
     // set up properties for filling into metadata
+    // noinspection GroovyAssignabilityCheck
     Map<String, String> properties = Map.of(
             "version", version,
             "fabric_loader_version", fabric_loader_version,
-            "fabric_api_version", fabric_api_version,
+            //"fabric_api_version", fabric_api_version,
             "minecraft_version", minecraft_version,
             "create_version", create_fabric_version // on fabric, use the entire version, unlike forge
     )

@@ -3,16 +3,16 @@
   "id": "notrainlimits",
   "version": "${version}",
   "name": "Create NTL",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Allows players to place illegal train tracks in Create",
   "authors": [
     "rdh"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "",
+    "sources": "https://github.com/rhysdh540/create-ntl"
   },
-  "license": "Insert License Here",
-  "icon": "assets/examplemod/icon.png",
+  "license": "GNU GPLv3",
+  "icon": "assets/notrainlimits/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -25,7 +25,7 @@
   "depends": {
     "minecraft": "${minecraft_version}",
     "fabricloader": ">=${fabric_loader_version}",
-    "fabric-api": ">=${fabric_api_version}",
+
     "create": "${create_version}"
   }
 }
