@@ -55,6 +55,7 @@ dependencies {
 
 processResources {
     // set up properties for filling into metadata
+    // noinspection GroovyAssignabilityCheck
     Map<String, String> properties = Map.of(
             "version", version,
             "forge_version", forge_version.split("\\.")[0], // only specify major version of forge

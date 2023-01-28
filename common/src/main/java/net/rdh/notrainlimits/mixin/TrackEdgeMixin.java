@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TrackEdge.class)
 public class TrackEdgeMixin {
-    @Inject(method = "canTravelTo", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "canTravelTo", at = @At("RETURN"), cancellable = true, remap = false)
     private void canTravelTo(TrackEdge other, CallbackInfoReturnable<Boolean> cir) {
         LOGGER.info("Edge Check Method Called!");
         cir.setReturnValue(true);

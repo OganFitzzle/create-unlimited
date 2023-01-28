@@ -9,7 +9,8 @@
     "PlacementInfoAccessor",
     "TrackBlockItemMixin",
     "TrackEdgeMixin",
-    "TrackPlacementAccessor"
+    "TrackPlacementAccessor",
+    "TrackPlacementMixin"
   ],
   "injectors": {
     "defaultRequire": 1
