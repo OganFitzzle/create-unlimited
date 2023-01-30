@@ -1,33 +1,33 @@
 modLoader = "javafml"
 loaderVersion = "[${forge_version},)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/rhysdh540/create-ntl/issues"
+license = "GNU GPLv3"
 
 [[mods]]
-modId = "examplemod"
+modId = "notrainlimits"
 version = "${version}"
-displayName = "Example Mod"
-authors = "Me!"
+displayName = "Create NTL"
+authors = "rdh"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Allows players to place illegal train tracks in Create
 '''
 logoFile = "icon.png"
 
-[[dependencies.examplemod]]
+[[dependencies.notrainlimits]]
 modId = "forge"
 mandatory = true
 versionRange = "[${forge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.notrainlimits]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.notrainlimits]]
 modId="create"
 mandatory=true
 versionRange="${create_version}"
