@@ -1,7 +1,7 @@
 package net.rdh.notrainlimits.mixin;
 
 import com.simibubi.create.content.logistics.trains.TrackEdge;
-import static net.rdh.notrainlimits.NoTrainLimits.LOGGER;
+import net.rdh.notrainlimits.ExpectPlatformThingy;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class TrackEdgeMixin {
     @Inject(method = "canTravelTo", at = @At("RETURN"), cancellable = true, remap = false)
     private void canTravelTo(TrackEdge other, CallbackInfoReturnable<Boolean> cir) {
-        LOGGER.info("Edge Check Method Called!");
-        cir.setReturnValue(true);
+        if(ExpectPlatformThingy.platformName().equals("Forge")) // temp fix until i figure out what exactly is wrong with fabric
+            cir.setReturnValue(true);
     }
 }

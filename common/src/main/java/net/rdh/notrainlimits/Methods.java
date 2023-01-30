@@ -29,7 +29,7 @@ import static com.simibubi.create.content.logistics.trains.track.TrackPlacement.
 
 public class Methods {
     public static final String tryConnectRef ="Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement;tryConnect(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;ZZ)Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;";
-    @SuppressWarnings({"Duplicates", "CommentedOutCode"})
+    @SuppressWarnings({"Duplicates", "CommentedOutCode", "ConstantValue", "UnusedAssignment"})
     public static PlacementInfo tryConnectLoose(Level level, Player player, BlockPos pos2, BlockState state2,
                                                 ItemStack stack, boolean girder, boolean maximiseTurn) {
         // NoTrainLimits.LOGGER.info("Track Placement Method Called!");
@@ -310,7 +310,7 @@ public class Methods {
         }
 
         info.hasRequiredTracks = true;
-        NoTrainLimits.LOGGER.info("tracks: " + ((PlacementInfoAccessor)info).isValid());
+//        NoTrainLimits.LOGGER.info("tracks: " + ((PlacementInfoAccessor)info).isValid());
 
         if (!player.isCreative()) {
             for (boolean simulate : Iterate.trueAndFalse) {

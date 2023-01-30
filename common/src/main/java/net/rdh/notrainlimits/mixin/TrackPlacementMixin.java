@@ -17,7 +17,7 @@ import static net.rdh.notrainlimits.Methods.tryConnectRef;
 @Mixin(TrackPlacement.class)
 public class TrackPlacementMixin {
     @Redirect(method = "clientTick", at = @At(value = "INVOKE", target = tryConnectRef))
-    private static PlacementInfo redirectPlaceTracks(Level level, Player player, BlockPos pos2, BlockState state2, ItemStack stack, boolean girder, boolean maximiseTurn) {
+    private static PlacementInfo redirectTryConnect(Level level, Player player, BlockPos pos2, BlockState state2, ItemStack stack, boolean girder, boolean maximiseTurn) {
         return Methods.tryConnectLoose(level, player, pos2, state2, stack, girder, maximiseTurn);
     }
 }
