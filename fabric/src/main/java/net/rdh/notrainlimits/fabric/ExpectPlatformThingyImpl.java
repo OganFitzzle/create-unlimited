@@ -1,8 +1,8 @@
-package net.examplemod.fabric;
+package net.rdh.notrainlimits.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
 
-public class ExampleExpectPlatformImpl {
+public class ExpectPlatformThingyImpl {
 	public static String platformName() {
 		return FabricLoader.getInstance().isModLoaded("quilt_loader") ? "Quilt" : "Fabric";
 	}

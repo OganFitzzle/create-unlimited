@@ -1,32 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "notrainlimits",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Create NTL",
+  "description": "Allows players to place illegal train tracks in Create",
   "authors": [
-    "Me!"
+    "rdh"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/rhysdh540/",
+    "sources": "https://github.com/rhysdh540/create-ntl"
   },
-  "license": "Insert License Here",
-  "icon": "assets/examplemod/icon.png",
+  "license": "GNU GPLv3",
+  "icon": "assets/notrainlimits/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "net.rdh.notrainlimits.fabric.NoTrainLimitsFabric"
     ]
   },
   "mixins": [
-    "examplemod.mixins.json",
-    "examplemod-common.mixins.json"
+    "notrainlimits.mixins.json"
   ],
   "depends": {
     "minecraft": "${minecraft_version}",
     "fabricloader": ">=${fabric_loader_version}",
-    "fabric-api": ">=${fabric_api_version}",
     "create": "${create_version}"
   }
 }
