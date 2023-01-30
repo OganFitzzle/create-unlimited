@@ -3,10 +3,13 @@
   "minVersion": "0.8",
   "package": "net.rdh.notrainlimits.mixin",
   "compatibilityLevel": "JAVA_17",
-  "client": [
-    "MixinTitleScreen"
-  ],
+  "client": [],
   "mixins": [
+    "PlacementInfoAccessor",
+    "TrackBlockItemMixin",
+    "TrackEdgeMixin",
+    "TrackPlacementAccessor",
+    "TrackPlacementMixin"
   ],
   "injectors": {
     "defaultRequire": 1
