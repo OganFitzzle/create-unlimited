@@ -6,9 +6,11 @@
   "client": [
   ],
   "mixins": [
-    "TrackBlockItemMixin",
     "PlacementInfoAccessor",
-    "TrackPlacementAccessor"
+    "TrackBlockItemMixin",
+    "TrackEdgeMixin",
+    "TrackPlacementAccessor",
+    "TrackPlacementMixin"
   ],
   "injectors": {
     "defaultRequire": 1
