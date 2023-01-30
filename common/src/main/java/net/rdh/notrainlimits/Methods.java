@@ -46,7 +46,7 @@ public class Methods {
         TrackPlacementAccessor.setHoveringPos(pos2);
         TrackPlacementAccessor.setLastItem(stack);
         cached = info;
-        ((PlacementInfoAccessor)info).setValid(true);
+        ((PlacementInfoAccessor)info).setValid(false);
 
         ITrackBlock track = (ITrackBlock) state2.getBlock();
         Pair<Vec3, AxisDirection> nearestTrackAxis = track.getNearestTrackAxis(level, pos2, state2, lookVec);
