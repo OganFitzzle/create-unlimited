@@ -7,8 +7,8 @@
   ],
   "mixins": [
     "PlacementInfoAccessor",
-    "TrackBlockItemMixin",
     "TrackEdgeMixin",
+    "TrackBlockItemMixin",
     "TrackPlacementAccessor",
     "TrackPlacementMixin"
   ],

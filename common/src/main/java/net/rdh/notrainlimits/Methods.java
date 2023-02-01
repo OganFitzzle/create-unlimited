@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.logistics.trains.BezierConnection;
 import com.simibubi.create.content.logistics.trains.ITrackBlock;
 import com.simibubi.create.content.logistics.trains.track.TrackBlock;
+import com.simibubi.create.content.logistics.trains.track.TrackPlacement;
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement.PlacementInfo;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.utility.*;
@@ -30,16 +31,19 @@ import static com.simibubi.create.content.logistics.trains.track.TrackPlacement.
 
 public class Methods {
     public static final String tryConnectRef ="Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement;tryConnect(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;ZZ)Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;";
+
     @SuppressWarnings({"Duplicates", "ConstantValue"})
-    public static PlacementInfo tryConnectLoose(Level level, Player player, BlockPos pos2, BlockState state2,
-                                                ItemStack stack, boolean girder, boolean maximiseTurn) {
+    public static PlacementInfo tryConnectLoose(Level level, Player player, BlockPos pos2, BlockState state2, ItemStack stack, boolean girder, boolean maximiseTurn) {
+        if(!Config.MOD_ENABLED.get())
+            return TrackPlacement.tryConnect(level, player, pos2, state2, stack, girder, maximiseTurn);
+
         // NoTrainLimits.LOGGER.info("Track Placement Method Called!");
         Vec3 lookVec = player.getLookAngle();
         int lookAngle = (int) (22.5 + AngleHelper.deg(Mth.atan2(lookVec.z, lookVec.x)) % 360) / 8;
 
-                if (level.isClientSide && cached != null && pos2.equals(TrackPlacementAccessor.getHoveringPos()) && stack.equals(TrackPlacementAccessor.getLastItem())
-                        && TrackPlacementAccessor.getHoveringMaxed() == maximiseTurn && lookAngle == TrackPlacementAccessor.getHoveringAngle())
-                    return cached;
+        if (level.isClientSide && cached != null && pos2.equals(TrackPlacementAccessor.getHoveringPos()) && stack.equals(TrackPlacementAccessor.getLastItem())
+                && TrackPlacementAccessor.getHoveringMaxed() == maximiseTurn && lookAngle == TrackPlacementAccessor.getHoveringAngle())
+            return cached;
 
         PlacementInfo info = new PlacementInfo();
         TrackPlacementAccessor.setHoveringMaxed(maximiseTurn);
@@ -338,11 +342,9 @@ public class Methods {
             BlockItem paveItem = (BlockItem) offhandItem.getItem();
             TrackPlacementAccessor.invokePaveTracks(level, info, paveItem, false);
         }
-
         if (((PlacementInfoAccessor)info).getCurve() != null && ((PlacementInfoAccessor)info).getCurve().getLength() > 120)
             AllAdvancements.LONG_BEND.awardTo(player);
 
         return TrackPlacementAccessor.invokePlaceTracks(level, info, state1, state2, targetPos1, targetPos2, false);
-
     }
 }

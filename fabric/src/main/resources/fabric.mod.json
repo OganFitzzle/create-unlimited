@@ -8,8 +8,8 @@
     "rdh"
   ],
   "contact": {
-    "homepage": "",
-    "sources": "https://github.com/rhysdh540/create-ntl"
+    "sources": "https://github.com/rhysdh540/create-ntl",
+    "issues":  "https://github.com/rhysdh540/create-ntl/issues"
   },
   "license": "GNU GPLv3",
   "icon": "assets/notrainlimits/icon.png",
