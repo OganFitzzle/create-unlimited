@@ -7,6 +7,7 @@ import com.simibubi.create.content.logistics.trains.track.TrackBlock;
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement.PlacementInfo;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.utility.*;
+import io.github.fabricators_of_create.porting_lib.transfer.item.ItemHandlerHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.AxisDirection;
@@ -29,7 +30,7 @@ import static com.simibubi.create.content.logistics.trains.track.TrackPlacement.
 
 public class Methods {
     public static final String tryConnectRef ="Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement;tryConnect(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/item/ItemStack;ZZ)Lcom/simibubi/create/content/logistics/trains/track/TrackPlacement$PlacementInfo;";
-    @SuppressWarnings({"Duplicates", "CommentedOutCode", "ConstantValue", "UnusedAssignment"})
+    @SuppressWarnings({"Duplicates", "ConstantValue"})
     public static PlacementInfo tryConnectLoose(Level level, Player player, BlockPos pos2, BlockState state2,
                                                 ItemStack stack, boolean girder, boolean maximiseTurn) {
         // NoTrainLimits.LOGGER.info("Track Placement Method Called!");
@@ -64,7 +65,6 @@ public class Methods {
         Vec3 normedAxis1 = axis1.normalize();
         Vec3 end1 = VecHelper.readNBT(selectionTag.getList("End", Tag.TAG_DOUBLE));
         Vec3 normal1 = VecHelper.readNBT(selectionTag.getList("Normal", Tag.TAG_DOUBLE));
-        boolean front1 = selectionTag.getBoolean("Front");
         BlockState state1 = level.getBlockState(pos1);
 
         if (level.isClientSide) {
@@ -87,7 +87,6 @@ public class Methods {
         if (axis1.dot(end2.subtract(end1)) < 0) {
             axis1 = axis1.scale(-1);
             normedAxis1 = normedAxis1.scale(-1);
-            front1 = !front1;
             end1 = track.getCurveStart(level, pos1, state1, axis1);
             if (level.isClientSide) {
                 ((PlacementInfoAccessor)info).setEnd1(end1);
@@ -139,24 +138,13 @@ public class Methods {
                 double u = Math.abs(sTest[1]);
 
                 skipCurve = Mth.equal(u, 0);
-
-                //                if (!skipCurve && sTest[0] < 0)
-                //                    return info.withMessage("perpendicular")
-                //                            .tooJumbly();
-
                 if (skipCurve) {
                     dist = VecHelper.getCenterOf(pos1)
                             .distanceTo(VecHelper.getCenterOf(pos2));
                     ((PlacementInfoAccessor)info).setEnd1Extent((int) Math.round((dist + 1) / axis1.length()));
 
                 } else {
-                    //                    if (!Mth.equal(ascend, 0))
-                    //                        return info.withMessage("ascending_s_curve");
-
                     double targetT = u <= 1 ? 3 : u * 2;
-
-                    //                    if (t < targetT)
-                    //                        return info.withMessage("too_sharp");
 
                     // This is for standardising s curve sizes
                     if (t > targetT) {
@@ -171,17 +159,14 @@ public class Methods {
         // Slope
 
         if (slope) {
+            /* TODO:
+             * the crash is caused by this check here (when it's off)
+             * but that's too strict (it blocks all curves that end or leave slopes)
+             * the game will only crash when exiting a slope to a flat tile around a bend
+             * so i want to check for only if that happens and leave it be otherwise
+             */
             if (!skipCurve)
-                return info.withMessage("slope_turn")
-                        .tooJumbly();
-            //            if (Mth.equal(normal1.dot(normal2), 0))
-            //                return info.withMessage("opposing_slopes");
-            if ((axis1.y < 0 || axis2.y > 0) && ascend > 0)
-                return info.withMessage("leave_slope_ascending")
-                        .tooJumbly();
-            if ((axis1.y > 0 || axis2.y < 0) && ascend < 0)
-                return info.withMessage("leave_slope_descending")
-                        .tooJumbly();
+                return info.withMessage("slope_turn").tooJumbly();
 
             skipCurve = false;
             ((PlacementInfoAccessor)info).setEnd1Extent(0);
@@ -198,17 +183,10 @@ public class Methods {
                 ((PlacementInfoAccessor)info).setEnd2Extent((int) Math.round(dist2 - dist1));
 
             double turnSize = Math.min(dist1, dist2);
-            //            if (intersect[0] < 0 || intersect[1] < 0)
-            //                return info.withMessage("too_sharp")
-            //                        .tooJumbly();
-            //            if (turnSize < 2)
-            //                return info.withMessage("too_sharp");
-
             // This is for standardising curve sizes
             if (turnSize > 2 && !maximiseTurn) {
                 ((PlacementInfoAccessor)info).setEnd1Extent(((PlacementInfoAccessor)info).getEnd1Extent()-2);
                 ((PlacementInfoAccessor)info).setEnd2Extent(((PlacementInfoAccessor)info).getEnd2Extent()-2);
-                turnSize = 2;
             }
         }
 
@@ -217,14 +195,9 @@ public class Methods {
         if (skipCurve && !Mth.equal(ascend, 0)) {
             int hDistance = ((PlacementInfoAccessor)info).getEnd1Extent();
             if (axis1.y == 0 || !Mth.equal(absAscend + 1, dist / axis1.length())) {
-
-                //                if (axis1.y != 0 && axis1.y == -axis2.y)
-                //                    return info.withMessage("ascending_s_curve");
-
                 ((PlacementInfoAccessor)info).setEnd1Extent(0);
+
                 double minHDistance = Math.max(absAscend < 4 ? absAscend * 4 : absAscend * 3, 6) / axis1.length();
-                //                if (hDistance < minHDistance)
-                //                    return info.withMessage("too_steep");
                 if (hDistance > minHDistance) {
                     int correction = (int) (hDistance - minHDistance);
                     ((PlacementInfoAccessor)info).setEnd1Extent(maximiseTurn ? 0 : correction / 2 + (correction % 2));
@@ -239,10 +212,6 @@ public class Methods {
 
         if (!parallel) {
             float absAngle = Math.abs(AngleHelper.deg(angle));
-            //            if (absAngle < 60 || absAngle > 300)
-            //                return info.withMessage("turn_90")
-            //                        .tooJumbly();
-
             intersect = VecHelper.intersect(end1, end2, normedAxis1, normedAxis2, Direction.Axis.Y);
             double dist1 = Math.abs(intersect[0]);
             double dist2 = Math.abs(intersect[1]);
@@ -256,19 +225,9 @@ public class Methods {
 
             double turnSize = Math.min(dist1, dist2) - .1d;
             boolean ninety = (absAngle + .25f) % 90 < 1;
-
-            //            if (intersect[0] < 0 || intersect[1] < 0)
-            //                return info.withMessage("too_sharp")
-            //                        .tooJumbly();
-
             double minTurnSize = ninety ? 7 : 3.25;
             double turnSizeToFitAscend =
                     minTurnSize + (ninety ? Math.max(0, absAscend - 3) * 2f : Math.max(0, absAscend - 1.5f) * 1.5f);
-
-            //            if (turnSize < minTurnSize)
-            //                return info.withMessage("too_sharp");
-            //            if (turnSize < turnSizeToFitAscend)
-            //                return info.withMessage("too_steep");
 
             // This is for standardising curve sizes
             if (!maximiseTurn) {
@@ -277,7 +236,6 @@ public class Methods {
             }
             ((PlacementInfoAccessor)info).setEnd1Extent(Mth.floor(ex1));
             ((PlacementInfoAccessor)info).setEnd2Extent(Mth.floor(ex2));
-            turnSize = turnSizeToFitAscend;
         }
 
         Vec3 offset1 = axis1.scale(((PlacementInfoAccessor)info).getEnd1Extent());
@@ -310,7 +268,6 @@ public class Methods {
         }
 
         info.hasRequiredTracks = true;
-//        NoTrainLimits.LOGGER.info("tracks: " + ((PlacementInfoAccessor)info).isValid());
 
         if (!player.isCreative()) {
             for (boolean simulate : Iterate.trueAndFalse) {
@@ -348,17 +305,15 @@ public class Methods {
                                 count - Math.min(isTrack ? tracks - foundTracks : pavement - foundPavement, count);
                         if (i == inv.selected)
                             stackInSlot.setTag(null);
-                        ItemStack newItem = copyStackWithSize(stackInSlot, remainingItems);
+                        ItemStack newItem = ItemHandlerHelper.copyStackWithSize(stackInSlot, remainingItems);
                         if (offhand)
                             player.setItemInHand(InteractionHand.OFF_HAND, newItem);
                         else
                             inv.setItem(i, newItem);
                     }
 
-                    if (isTrack)
-                        foundTracks += count;
-                    else
-                        foundPavement += count;
+                    if (isTrack) foundTracks += count;
+                    else foundPavement += count;
                 }
 
                 if (simulate && foundTracks < tracks) {
@@ -389,12 +344,5 @@ public class Methods {
 
         return TrackPlacementAccessor.invokePlaceTracks(level, info, state1, state2, targetPos1, targetPos2, false);
 
-    }
-    // copied from io.github.fabricators_of_create.porting_lib.transfer.item.ItemHandlerHelper
-    public static ItemStack copyStackWithSize(ItemStack stack, int size) {
-        if (size == 0) return ItemStack.EMPTY;
-        ItemStack copy = stack.copy();
-        copy.setCount(size);
-        return copy;
     }
 }
