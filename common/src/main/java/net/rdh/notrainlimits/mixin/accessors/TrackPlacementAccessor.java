@@ -21,7 +21,6 @@ public interface TrackPlacementAccessor {
     @Accessor("hoveringAngle") static void setHoveringAngle(int angle) { throw new AssertionError(); }
     @Accessor("lastItem") static ItemStack getLastItem() { throw new AssertionError(); }
     @Accessor("lastItem") static void setLastItem(ItemStack item) { throw new AssertionError(); }
-    @Invoker("placeTracks") static TrackPlacement.PlacementInfo invokePlaceTracks(Level level, TrackPlacement.PlacementInfo info, BlockState state1, BlockState state2,
-                                                                                  BlockPos targetPos1, BlockPos targetPos2, boolean simulate) { throw new AssertionError(); }
+    @Invoker("placeTracks") static TrackPlacement.PlacementInfo invokePlaceTracks(Level level, TrackPlacement.PlacementInfo info, BlockState state1, BlockState state2, BlockPos targetPos1, BlockPos targetPos2, boolean simulate) { throw new AssertionError(); }
     @Invoker("paveTracks") static void invokePaveTracks(Level level, TrackPlacement.PlacementInfo info, BlockItem blockItem, boolean simulate) { throw new AssertionError(); }
 }

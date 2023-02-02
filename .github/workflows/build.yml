@@ -3,6 +3,7 @@ on: [ pull_request, push ]
 
 jobs:
   build:
+    if: "!startsWith(github.event.head_commit.message, '[skip]')"
     strategy:
       matrix:
         java: [ 17 ]
