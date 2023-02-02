@@ -12,7 +12,7 @@ body:
   - type: textarea
     attributes:
       label: Description of feature
-      description: What did you want to exist in NTL?
+      description: What do you want to exist in NTL?
       placeholder: I want flying trains!
     validations:
       required: true
