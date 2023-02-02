@@ -20,5 +20,5 @@ body:
     attributes:
       label: This suggestion is unique
       options:
-        - label: I have searched the issue tracker and did not find an suggestion describing my feature.
+        - label: I have searched the issue tracker and did not find an existing suggestion describing my feature.
           required: true
