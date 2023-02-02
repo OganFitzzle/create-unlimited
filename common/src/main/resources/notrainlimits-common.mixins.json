@@ -3,14 +3,17 @@
   "minVersion": "0.8",
   "package": "net.rdh.notrainlimits.mixin",
   "compatibilityLevel": "JAVA_17",
-  "client": [
-  ],
+  "client": [],
   "mixins": [
-    "PlacementInfoAccessor",
+    "ClientEventsMixin",
+    "InputEventsMixin",
     "TrackBlockItemMixin",
     "TrackEdgeMixin",
-    "TrackPlacementAccessor",
-    "TrackPlacementMixin"
+    "TrackPlacementMixin",
+    "TrainMixin",
+    "accessors.PlacementInfoAccessor",
+    "accessors.TrackPlacementAccessor",
+    "accessors.TrainRelocatorAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

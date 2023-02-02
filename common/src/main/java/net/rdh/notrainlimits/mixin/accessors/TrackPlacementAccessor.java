@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.notrainlimits.mixin.accessors;
 
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement;
 import net.minecraft.world.item.BlockItem;
@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(TrackPlacement.class)
+@SuppressWarnings("unused")
 public interface TrackPlacementAccessor {
     @Accessor("hoveringPos") static BlockPos getHoveringPos() { throw new AssertionError(); }
     @Accessor("hoveringPos") static void setHoveringPos(BlockPos pos) { throw new AssertionError(); }
@@ -20,7 +21,6 @@ public interface TrackPlacementAccessor {
     @Accessor("hoveringAngle") static void setHoveringAngle(int angle) { throw new AssertionError(); }
     @Accessor("lastItem") static ItemStack getLastItem() { throw new AssertionError(); }
     @Accessor("lastItem") static void setLastItem(ItemStack item) { throw new AssertionError(); }
-    @Invoker("placeTracks") static TrackPlacement.PlacementInfo invokePlaceTracks(Level level, TrackPlacement.PlacementInfo info, BlockState state1, BlockState state2,
-                                                                                  BlockPos targetPos1, BlockPos targetPos2, boolean simulate) { throw new AssertionError(); }
+    @Invoker("placeTracks") static TrackPlacement.PlacementInfo invokePlaceTracks(Level level, TrackPlacement.PlacementInfo info, BlockState state1, BlockState state2, BlockPos targetPos1, BlockPos targetPos2, boolean simulate) { throw new AssertionError(); }
     @Invoker("paveTracks") static void invokePaveTracks(Level level, TrackPlacement.PlacementInfo info, BlockItem blockItem, boolean simulate) { throw new AssertionError(); }
 }
