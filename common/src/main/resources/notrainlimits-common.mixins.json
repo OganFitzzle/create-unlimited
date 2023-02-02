@@ -5,11 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "client": [],
   "mixins": [
-    "PlacementInfoAccessor",
+    "InputEventsMixin",
+    "accessors.PlacementInfoAccessor",
     "TrackBlockItemMixin",
     "TrackEdgeMixin",
-    "TrackPlacementAccessor",
-    "TrackPlacementMixin"
+    "accessors.TrackPlacementAccessor",
+    "TrackPlacementMixin",
+    "TrainMixin",
+    "accessors.TrainRelocatorAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

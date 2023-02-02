@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.notrainlimits.mixin.accessors;
 
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement;
 import net.minecraft.world.item.BlockItem;
@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(TrackPlacement.class)
+@SuppressWarnings("unused")
 public interface TrackPlacementAccessor {
     @Accessor("hoveringPos") static BlockPos getHoveringPos() { throw new AssertionError(); }
     @Accessor("hoveringPos") static void setHoveringPos(BlockPos pos) { throw new AssertionError(); }
