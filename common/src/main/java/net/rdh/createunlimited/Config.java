@@ -5,7 +5,7 @@ import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class Config {
-    public static final String CATEGORY_NTL = "createunlimited";
+    public static final String CATEGORY_CU = "createunlimited";
 
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec SPEC;
@@ -17,7 +17,7 @@ public class Config {
     public static ForgeConfigSpec.IntValue MAX_GLUE_RANGE;
 
     static {
-        BUILDER.comment("Enable/Disable NTL Features").push(CATEGORY_NTL);
+        BUILDER.comment("Enable/Disable CU Features").push(CATEGORY_CU);
         MOD_ENABLED = BUILDER.comment("Allow for the placement of illegal tracks.").define("mod_enabled", true);
         VERY_ILLEGAL_DRIVING = BUILDER.comment("Allow trains to drive on \"very illegal\" tracks.").define("very_illegal_driving", true);
         MAX_TRAIN_RELOCATING_DISTANCE = BUILDER.comment("The maximum distance allowed to move trains with wrenches").defineInRange("max_train_relocating_distance", 24, 0, 128);
@@ -28,7 +28,7 @@ public class Config {
         SPEC = BUILDER.build();
     }
     public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {
-        CreateUnlimited.LOGGER.info("Loading NTL config!");
+        CreateUnlimited.LOGGER.info("Loading CU config!");
         final CommentedFileConfig configData = CommentedFileConfig.builder(path)
                 .sync()
                 .autosave()

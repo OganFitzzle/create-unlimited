@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[${forge_version},)"
-issueTrackerURL = "https://github.com/rhysdh540/create-ntl/issues"
+issueTrackerURL = "https://github.com/rhysdh540/create-unlimited/issues"
 license = "GNU GPLv3"
 
 [[mods]]

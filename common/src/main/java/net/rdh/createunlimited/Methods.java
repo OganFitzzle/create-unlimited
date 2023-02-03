@@ -37,7 +37,7 @@ public class Methods {
         if(!Config.MOD_ENABLED.get())
             return TrackPlacement.tryConnect(level, player, pos2, state2, stack, girder, maximiseTurn);
 
-        // NoTrainLimits.LOGGER.info("Track Placement Method Called!");
+        // CreateUnlimited.LOGGER.info("Track Placement Method Called!");
         Vec3 lookVec = player.getLookAngle();
         int lookAngle = (int) (22.5 + AngleHelper.deg(Mth.atan2(lookVec.z, lookVec.x)) % 360) / 8;
 
