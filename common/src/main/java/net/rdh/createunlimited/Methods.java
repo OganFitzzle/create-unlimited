@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits;
+package net.rdh.createunlimited;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.logistics.trains.BezierConnection;
@@ -24,8 +24,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.rdh.notrainlimits.mixin.accessors.PlacementInfoAccessor;
-import net.rdh.notrainlimits.mixin.accessors.TrackPlacementAccessor;
+import net.rdh.createunlimited.mixin.accessors.PlacementInfoAccessor;
+import net.rdh.createunlimited.mixin.accessors.TrackPlacementAccessor;
 
 import static com.simibubi.create.content.logistics.trains.track.TrackPlacement.cached;
 
@@ -37,7 +37,7 @@ public class Methods {
         if(!Config.MOD_ENABLED.get())
             return TrackPlacement.tryConnect(level, player, pos2, state2, stack, girder, maximiseTurn);
 
-        // NoTrainLimits.LOGGER.info("Track Placement Method Called!");
+        // CreateUnlimited.LOGGER.info("Track Placement Method Called!");
         Vec3 lookVec = player.getLookAngle();
         int lookAngle = (int) (22.5 + AngleHelper.deg(Mth.atan2(lookVec.z, lookVec.x)) % 360) / 8;
 

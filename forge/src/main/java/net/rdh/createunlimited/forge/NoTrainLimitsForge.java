@@ -1,20 +1,20 @@
-package net.rdh.notrainlimits.forge;
+package net.rdh.createunlimited.forge;
 
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.rdh.notrainlimits.Config;
-import net.rdh.notrainlimits.NoTrainLimits;
+import net.rdh.createunlimited.Config;
+import net.rdh.createunlimited.CreateUnlimited;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(NoTrainLimits.MOD_ID)
+@Mod(CreateUnlimited.MOD_ID)
 public class NoTrainLimitsForge {
     public NoTrainLimitsForge() {
         initConfig();
-        NoTrainLimits.init();
+        CreateUnlimited.init();
     }
     private static void initConfig() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        Config.loadConfig(Config.SPEC, FMLPaths.CONFIGDIR.get().resolve("notrainlimits.toml"));
+        Config.loadConfig(Config.SPEC, FMLPaths.CONFIGDIR.get().resolve("createunlimited.toml"));
     }
 }

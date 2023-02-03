@@ -9,7 +9,7 @@ body:
           - You are using the latest version of the mod.
           - You are using the recommended version of Create.
           - You are using the correct version of Minecraft (and the right mod loader).
-          - The issue does not occur in without NTL installed.
+          - The issue does not occur in without Create Unlimited installed.
         
         **Do not forget to give your issue a descriptive title.** "game crashes" makes it hard to distinguish issues at a glance.
   - type: dropdown
@@ -31,8 +31,8 @@ body:
   - type: textarea
     attributes:
       label: Mod Version
-      description: The version of NTL used in the bug report.
-      placeholder: 0.1a
+      description: The version of Create Unlimited used in the bug report.
+      placeholder: 0.2
     validations:
       required: true
   - type: textarea

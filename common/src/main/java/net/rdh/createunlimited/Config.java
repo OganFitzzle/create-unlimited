@@ -1,11 +1,11 @@
-package net.rdh.notrainlimits;
+package net.rdh.createunlimited;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class Config {
-    public static final String CATEGORY_NTL = "notrainlimits";
+    public static final String CATEGORY_CU = "createunlimited";
 
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec SPEC;
@@ -16,7 +16,7 @@ public class Config {
     public static ForgeConfigSpec.IntValue MAX_ALLOWED_STRESS;
 
     static {
-        BUILDER.comment("Enable/Disable NTL Features").push(CATEGORY_NTL);
+        BUILDER.comment("Enable/Disable CU Features").push(CATEGORY_CU);
         MOD_ENABLED = BUILDER.comment("Allow for the placement of illegal tracks.").define("mod_enableD", true);
         VERY_ILLEGAL = BUILDER.comment("Allow trains to drive on \"very illegal\" tracks.").define("very_illegal", true);
         WRENCH_VALUE = BUILDER.comment("Allow for the use of the wrench.").defineInRange("wrench_value", 24, 0, 128);
@@ -26,7 +26,7 @@ public class Config {
         SPEC = BUILDER.build();
     }
     public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {
-        NoTrainLimits.LOGGER.info("Loading NTL config!");
+        CreateUnlimited.LOGGER.info("Loading CU config!");
         final CommentedFileConfig configData = CommentedFileConfig.builder(path)
                 .sync()
                 .autosave()

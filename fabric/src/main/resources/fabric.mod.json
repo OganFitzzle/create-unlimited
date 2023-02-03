@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "id": "notrainlimits",
+  "id": "createunlimited",
   "version": "${version}",
-  "name": "Create NTL",
-  "description": "Allows players to place illegal train tracks in Create",
+  "name": "Create Unlimited",
+  "description": "Remove all the limits!",
   "authors": [
     "rdh"
   ],
   "contact": {
-    "sources": "https://github.com/rhysdh540/create-ntl",
-    "issues":  "https://github.com/rhysdh540/create-ntl/issues"
+    "sources": "https://github.com/rhysdh540/create-unlimited",
+    "issues":  "https://github.com/rhysdh540/create-unlimited/issues"
   },
   "license": "GNU GPLv3",
-  "icon": "assets/notrainlimits/icon.png",
+  "icon": "assets/createunlimited/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.rdh.notrainlimits.fabric.NoTrainLimitsFabric"
+      "net.rdh.createunlimited.fabric.CreateUnlimitedFabric"
     ]
   },
   "mixins": [

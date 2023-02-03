@@ -1,33 +1,33 @@
 modLoader = "javafml"
 loaderVersion = "[${forge_version},)"
-issueTrackerURL = "https://github.com/rhysdh540/create-ntl/issues"
+issueTrackerURL = "https://github.com/rhysdh540/create-unlimited/issues"
 license = "GNU GPLv3"
 
 [[mods]]
-modId = "notrainlimits"
+modId = "createunlimited"
 version = "${version}"
-displayName = "Create NTL"
+displayName = "Create Unlimited"
 authors = "rdh"
 description = '''
-Allows players to place illegal train tracks in Create
+Remove all the limits!
 '''
 logoFile = "icon.png"
 
-[[dependencies.notrainlimits]]
+[[dependencies.createunlimited]]
 modId = "forge"
 mandatory = true
 versionRange = "[${forge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.notrainlimits]]
+[[dependencies.createunlimited]]
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.notrainlimits]]
+[[dependencies.createunlimited]]
 modId="create"
 mandatory=true
 versionRange="${create_version}"

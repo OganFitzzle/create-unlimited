@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.createunlimited.mixin;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
@@ -14,8 +14,8 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.rdh.notrainlimits.Config;
-import net.rdh.notrainlimits.mixin.accessors.TrainRelocatorAccessor;
+import net.rdh.createunlimited.Config;
+import net.rdh.createunlimited.mixin.accessors.TrainRelocatorAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import static net.rdh.notrainlimits.mixin.accessors.TrainRelocatorAccessor.*;
+import static net.rdh.createunlimited.mixin.accessors.TrainRelocatorAccessor.*;
 
 
 @Mixin(ClientEvents.class)

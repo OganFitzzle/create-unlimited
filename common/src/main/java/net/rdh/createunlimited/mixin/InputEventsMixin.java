@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.createunlimited.mixin;
 
 import com.simibubi.create.content.logistics.trains.entity.Train;
 import com.simibubi.create.events.InputEvents;
@@ -7,9 +7,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.InteractionResult;
-import net.rdh.notrainlimits.Config;
-import net.rdh.notrainlimits.NoTrainLimits;
-import net.rdh.notrainlimits.mixin.accessors.TrainRelocatorAccessor;
+import net.rdh.createunlimited.Config;
+import net.rdh.createunlimited.CreateUnlimited;
+import net.rdh.createunlimited.mixin.accessors.TrainRelocatorAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -32,7 +32,7 @@ public class InputEventsMixin {
 
         if (!player.position()
                 .closerThan(TrainRelocatorAccessor.getRelocatingOrigin(), Config.WRENCH_VALUE.get()) || player.isSteppingCarefully()) {
-            NoTrainLimits.LOGGER.info("wrench gotten, value is " + Config.WRENCH_VALUE.get());
+            CreateUnlimited.LOGGER.info("wrench gotten, value is " + Config.WRENCH_VALUE.get());
             TrainRelocatorAccessor.setRelocatingTrain(null);
             player.displayClientMessage(Lang.translateDirect("train.relocate.abort")
                     .withStyle(ChatFormatting.RED), true);

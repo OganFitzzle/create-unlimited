@@ -1,7 +1,7 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.createunlimited.mixin;
 
 import com.simibubi.create.content.logistics.trains.TrackEdge;
-import net.rdh.notrainlimits.Config;
+import net.rdh.createunlimited.Config;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
