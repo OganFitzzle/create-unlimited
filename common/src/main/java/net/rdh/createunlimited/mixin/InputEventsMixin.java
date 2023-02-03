@@ -31,8 +31,8 @@ public class InputEventsMixin {
             return InteractionResult.PASS;
 
         if (!player.position()
-                .closerThan(TrainRelocatorAccessor.getRelocatingOrigin(), Config.WRENCH_VALUE.get()) || player.isSteppingCarefully()) {
-            CreateUnlimited.LOGGER.info("wrench gotten, value is " + Config.WRENCH_VALUE.get());
+                .closerThan(TrainRelocatorAccessor.getRelocatingOrigin(), Config.MAX_TRAIN_RELOCATING_DISTANCE.get()) || player.isSteppingCarefully()) {
+            CreateUnlimited.LOGGER.info("wrench gotten, value is " + Config.MAX_TRAIN_RELOCATING_DISTANCE.get());
             TrainRelocatorAccessor.setRelocatingTrain(null);
             player.displayClientMessage(Lang.translateDirect("train.relocate.abort")
                     .withStyle(ChatFormatting.RED), true);

@@ -10,17 +10,19 @@ public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static ForgeConfigSpec SPEC;
 
-    public static ForgeConfigSpec.BooleanValue MOD_ENABLED;
-    public static ForgeConfigSpec.BooleanValue VERY_ILLEGAL;
-    public static ForgeConfigSpec.IntValue WRENCH_VALUE;
+    public static ForgeConfigSpec.BooleanValue PLACEMENT_ENABLED;
+    public static ForgeConfigSpec.BooleanValue VERY_ILLEGAL_DRIVING;
+    public static ForgeConfigSpec.IntValue MAX_TRAIN_RELOCATING_DISTANCE;
     public static ForgeConfigSpec.IntValue MAX_ALLOWED_STRESS;
+    public static ForgeConfigSpec.IntValue MAX_GLUE_RANGE;
 
     static {
         BUILDER.comment("Enable/Disable CU Features").push(CATEGORY_CU);
-        MOD_ENABLED = BUILDER.comment("Allow for the placement of illegal tracks.").define("mod_enableD", true);
-        VERY_ILLEGAL = BUILDER.comment("Allow trains to drive on \"very illegal\" tracks.").define("very_illegal", true);
-        WRENCH_VALUE = BUILDER.comment("Allow for the use of the wrench.").defineInRange("wrench_value", 24, 0, 128);
+        PLACEMENT_ENABLED = BUILDER.comment("Allow for the placement of illegal tracks.").define("placement_enabled", true);
+        VERY_ILLEGAL_DRIVING = BUILDER.comment("Allow trains to drive on \"very illegal\" tracks.").define("very_illegal_driving", true);
+        MAX_TRAIN_RELOCATING_DISTANCE = BUILDER.comment("Allow for the use of the wrench.").defineInRange("max_train_relocating_distance", 24, 0, 128);
         MAX_ALLOWED_STRESS = BUILDER.comment("Maximum stress from couplings before train derails. Set to -1 to disable.").defineInRange("max_allowed_stress", 4, -1, 128);
+        MAX_GLUE_RANGE = BUILDER.comment("Maximum range for superglue.").defineInRange("max_glue_range", 24, 0, 256);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

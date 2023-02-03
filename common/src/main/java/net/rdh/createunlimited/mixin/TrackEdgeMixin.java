@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class TrackEdgeMixin {
     @Inject(method = "canTravelTo", at = @At("RETURN"), cancellable = true, remap = false)
     private void canTravelTo(TrackEdge other, CallbackInfoReturnable<Boolean> cir) {
-        if(Config.VERY_ILLEGAL.get())
+        if(Config.VERY_ILLEGAL_DRIVING.get())
             cir.setReturnValue(true);
     }
 }

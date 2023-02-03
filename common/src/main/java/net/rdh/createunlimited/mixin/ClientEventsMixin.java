@@ -65,7 +65,7 @@ public class ClientEventsMixin {
             }
 
             if (!player.position()
-                    .closerThan(getRelocatingOrigin(), Config.WRENCH_VALUE.get())) {
+                    .closerThan(getRelocatingOrigin(), Config.MAX_TRAIN_RELOCATING_DISTANCE.get())) {
                 player.displayClientMessage(Lang.translateDirect("train.relocate.too_far")
                         .withStyle(ChatFormatting.RED), true);
                 return;

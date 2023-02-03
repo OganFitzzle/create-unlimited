@@ -34,7 +34,7 @@ public class Methods {
 
     @SuppressWarnings({"Duplicates", "ConstantValue"})
     public static PlacementInfo tryConnectLoose(Level level, Player player, BlockPos pos2, BlockState state2, ItemStack stack, boolean girder, boolean maximiseTurn) {
-        if(!Config.MOD_ENABLED.get())
+        if(!Config.PLACEMENT_ENABLED.get())
             return TrackPlacement.tryConnect(level, player, pos2, state2, stack, girder, maximiseTurn);
 
         // CreateUnlimited.LOGGER.info("Track Placement Method Called!");

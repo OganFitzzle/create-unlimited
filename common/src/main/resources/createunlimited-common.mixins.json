@@ -7,11 +7,13 @@
   "mixins": [
     "ClientEventsMixin",
     "InputEventsMixin",
+    "SuperGlueSectionHandlerMixin",
     "TrackBlockItemMixin",
     "TrackEdgeMixin",
     "TrackPlacementMixin",
     "TrainMixin",
     "accessors.PlacementInfoAccessor",
+    "accessors.SuperGlueSectionHandlerAccessor",
     "accessors.TrackPlacementAccessor",
     "accessors.TrainRelocatorAccessor"
   ],
