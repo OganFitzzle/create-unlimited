@@ -1,13 +1,13 @@
-package net.rdh.notrainlimits;
+package net.rdh.createunlimited;
 
 import com.simibubi.create.Create;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NoTrainLimits {
-    public static final String MOD_ID = "notrainlimits";
-    public static final String NAME = "Create NTL";
+public class CreateUnlimited {
+    public static final String MOD_ID = "createunlimited";
+    public static final String NAME = "Create Unlimited";
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
 

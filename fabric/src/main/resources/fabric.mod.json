@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "notrainlimits",
+  "id": "createunlimited",
   "version": "${version}",
-  "name": "Create NTL",
+  "name": "Create Unlimited",
   "description": "Allows players to place illegal train tracks in Create",
   "authors": [
     "rdh"
@@ -12,15 +12,15 @@
     "sources": "https://github.com/rhysdh540/create-ntl"
   },
   "license": "GNU GPLv3",
-  "icon": "assets/notrainlimits/icon.png",
+  "icon": "assets/createunlimited/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.rdh.notrainlimits.fabric.NoTrainLimitsFabric"
+      "net.rdh.createunlimited.fabric.CreateUnlimitedFabric"
     ]
   },
   "mixins": [
-    "notrainlimits.mixins.json"
+    "createunlimited.mixins.json"
   ],
   "depends": {
     "minecraft": "${minecraft_version}",

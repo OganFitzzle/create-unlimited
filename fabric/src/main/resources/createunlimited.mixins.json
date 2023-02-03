@@ -1,17 +1,19 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.rdh.notrainlimits.mixin",
+  "package": "net.rdh.createunlimited.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [],
   "mixins": [
     "ClientEventsMixin",
     "InputEventsMixin",
+    "SuperGlueSectionHandlerMixin",
     "TrackBlockItemMixin",
     "TrackEdgeMixin",
     "TrackPlacementMixin",
     "TrainMixin",
     "accessors.PlacementInfoAccessor",
+    "accessors.SuperGlueSectionHandlerAccessor",
     "accessors.TrackPlacementAccessor",
     "accessors.TrainRelocatorAccessor"
   ],

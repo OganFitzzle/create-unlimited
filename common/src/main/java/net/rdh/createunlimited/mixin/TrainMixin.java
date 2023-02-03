@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.mixin;
+package net.rdh.createunlimited.mixin;
 
 import com.simibubi.create.Create;
 import com.simibubi.create.content.logistics.trains.TrackGraph;
@@ -12,8 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.rdh.notrainlimits.Config;
-import net.rdh.notrainlimits.NoTrainLimits;
+import net.rdh.createunlimited.Config;
 import org.spongepowered.asm.mixin.Mixin;
 
 import org.spongepowered.asm.mixin.Overwrite;

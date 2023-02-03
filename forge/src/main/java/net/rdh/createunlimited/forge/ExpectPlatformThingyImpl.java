@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits.forge;
+package net.rdh.createunlimited.forge;
 
 public class ExpectPlatformThingyImpl {
 	public static String platformName() {

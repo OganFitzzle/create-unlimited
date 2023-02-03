@@ -1,4 +1,4 @@
-package net.rdh.notrainlimits;
+package net.rdh.createunlimited;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
 
