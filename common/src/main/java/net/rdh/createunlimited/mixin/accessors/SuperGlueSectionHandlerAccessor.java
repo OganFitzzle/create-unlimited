@@ -13,10 +13,10 @@ import java.util.Set;
 
 @Mixin(SuperGlueSelectionHandler.class)
 public interface SuperGlueSectionHandlerAccessor {
-    @Invoker("isGlue") public boolean invokeIsGlue(ItemStack stack);
+    @Invoker public boolean invokeIsGlue(ItemStack stack);
     @Accessor public void setFirstPos(BlockPos firstPos);
     @Accessor public BlockPos getFirstPos();
-    @Invoker("discard") public void discard();
+    @Invoker public void invokeDiscard();
     @Accessor public int getClusterCooldown();
     @Accessor public void setClusterCooldown(int clusterCooldown);
     @Accessor public Object getClusterOutlineSlot();
