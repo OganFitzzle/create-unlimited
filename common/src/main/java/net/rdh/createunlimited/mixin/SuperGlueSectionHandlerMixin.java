@@ -49,7 +49,7 @@ public class SuperGlueSectionHandlerMixin {
 
         if (!((SuperGlueSectionHandlerAccessor)this).invokeIsGlue(stack)) {
             if (((SuperGlueSectionHandlerAccessor)this).getFirstPos() != null)
-                ((SuperGlueSectionHandlerAccessor)this).discard();
+                ((SuperGlueSectionHandlerAccessor)this).invokeDiscard();
             return;
         }
 
