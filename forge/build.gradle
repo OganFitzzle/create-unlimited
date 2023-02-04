@@ -71,8 +71,7 @@ processResources {
 loom {
     forge {
         mixinConfig(
-                "rdh-common.mixins.json",
-                "rdh.mixins.json"
+                "createunlimited-common.mixins.json"
         )
     }
 }
