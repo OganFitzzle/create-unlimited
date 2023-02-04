@@ -7,6 +7,7 @@ import com.simibubi.create.content.logistics.trains.track.TrackBlock;
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement;
 import com.simibubi.create.content.logistics.trains.track.TrackPlacement.PlacementInfo;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
+import com.simibubi.create.foundation.config.AllConfigs;
 import com.simibubi.create.foundation.utility.*;
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemHandlerHelper;
 import net.minecraft.core.BlockPos;
@@ -40,6 +41,7 @@ public class Methods {
         // CreateUnlimited.LOGGER.info("Track Placement Method Called!");
         Vec3 lookVec = player.getLookAngle();
         int lookAngle = (int) (22.5 + AngleHelper.deg(Mth.atan2(lookVec.z, lookVec.x)) % 360) / 8;
+        int maxLength = AllConfigs.SERVER.trains.maxTrackPlacementLength.get();
 
         if (level.isClientSide && cached != null && pos2.equals(TrackPlacementAccessor.getHoveringPos()) && stack.equals(TrackPlacementAccessor.getLastItem())
                 && TrackPlacementAccessor.getHoveringMaxed() == maximiseTurn && lookAngle == TrackPlacementAccessor.getHoveringAngle())
@@ -82,7 +84,7 @@ public class Methods {
 
         if (pos1.equals(pos2))
             return info.withMessage("second_point");
-        if (pos1.distSqr(pos2) > 128 * 128)
+        if (pos1.distSqr(pos2) > maxLength * maxLength)
             return info.withMessage("too_far")
                     .tooJumbly();
         if (!state1.hasProperty(TrackBlock.HAS_TE))
