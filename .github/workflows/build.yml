@@ -1,4 +1,4 @@
-name: build
+name: automated build
 on: [ pull_request, push ]
 
 jobs:
@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: checkout repository
+      - name: steal code from myself
         uses: actions/checkout@v2
 
-      - name: setup jdk ${{ matrix.java }}
+      - name: setup java ${{ matrix.java }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
 
-      - uses: actions/cache@v2
+      - name: do the gradle
+        uses: actions/cache@v2
         with:
           path: |
             ~/.gradle/caches
@@ -27,20 +28,20 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      - name: make gradle wrapper executable
+      - name: do the gradle part 2
         run: chmod +x ./gradlew
 
-      - name: build
+      - name: build (the thing actually happening)
         run: ./gradlew build
 
-      - name: capture build artifacts forge
+      - name: upload jars (forge)
         uses: actions/upload-artifact@v2
         with:
-          name: Artifacts (forge)
+          name: create-unlimited-artifacts-forge
           path: forge/build/libs/
 
-      - name: capture build artifacts fabric
+      - name: upload jars (fabric)
         uses: actions/upload-artifact@v2
         with:
-          name: Artifacts (fabric)
+          name: create-unlimited-artifacts-fabric
           path: fabric/build/libs/
