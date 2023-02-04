@@ -72,8 +72,7 @@ processResources {
 loom {
     forge {
         mixinConfig(
-                "createunlimited-common.mixins.json",
-                "createunlimited.mixins.json"
+                "createunlimited-common.mixins.json"
         )
     }
 }
