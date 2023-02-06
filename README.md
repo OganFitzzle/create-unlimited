@@ -2,16 +2,26 @@
 
 This mod removes most of the limitations on various items and features of the Create mod.
 
+### Current "Features":
+- Remove train track placing limits
+- 
+
 It is **required** only on the server, but it is recommended that users install it on the client as well to take advantage of extra features.
 
-credit to [tizu69](https://github.com/tizu69) for the original idea.
+credit to [tizu69](https://github.com/tizu69) for the original idea (and the icon).
 
-## Installation
 
-first, click on the Actions tab of this repository
-<img width="1662" alt="image" src="https://user-images.githubusercontent.com/98863820/215941225-5fba083e-5b04-4661-a067-f6a2734e2331.png">
-then, choose the highest up workflow with a check that has your desired version on it.
-<img width="1312" alt="image" src="https://user-images.githubusercontent.com/98863820/215941576-ef7224a7-867a-4bfe-a0ca-1ae7fce6a733.png">
-scroll down and download the artifacts for your desired modloader
-<img width="1307" alt="image" src="https://user-images.githubusercontent.com/98863820/215941828-61191031-fad3-4600-8de2-ce5cb56e96b7.png">
-unzip the file you downloaded and choose the jar that doesn't say shadow or sources and put that in your mods folder alongside create
+### LATEST STABLE BUILDS:
+These are confirmed to work and not crash, but can be outdated.
+ - 1.18.2: Build **15**
+ - 1.19.2: Build **19**
+
+### How to install
+First, click on the actions tab of this repository.
+![actions](./assets/README-1675691642305.png)
+Then, either click on the latest workflow with a green check, or look for the specified stable build number above.
+![builds](./assets/README-1675691971118.png)
+Scroll down to the bottom of the page and click on the artifacts for your modloader. Unzip this file.
+![download](./assets/README-1675692235573.png)
+Select the file that does not end with "sources" or "dev-shadow" and put that in your mods folder. 
+![files](./assets/README-1675694308412.png)
