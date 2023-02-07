@@ -1,1 +1,1 @@
-this branch contains "old jars" on No Train Limits: replace Create with this in your mods folder.
+this branch contains "old jars" of No Train Limits: replace Create with this in your mods folder.
