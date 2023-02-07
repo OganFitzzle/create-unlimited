@@ -12,6 +12,7 @@ import com.simibubi.create.foundation.utility.*;
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemHandlerHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
@@ -165,21 +166,14 @@ public class Methods {
         // Slope
 
         if (slope) {
-            /* TODO:
-             * the crash is caused by this check here (when it's off)
-             * but that's too strict (it blocks all curves that end or leave slopes)
-             * the game will only crash when exiting a slope to a flat tile around a bend
-             * so i want to check for only if that happens and leave it be otherwise
-             */
-            if (!skipCurve)
-                return info.withMessage("slope_turn").tooJumbly();
-
             skipCurve = false;
             ((PlacementInfoAccessor)info).setEnd1Extent(0);
             ((PlacementInfoAccessor)info).setEnd2Extent(0);
 
             Direction.Axis plane = Mth.equal(axis1.x, 0) ? Direction.Axis.X : Direction.Axis.Z;
             intersect = VecHelper.intersect(end1, end2, normedAxis1, normedAxis2, plane);
+            if(intersect == null)
+                intersect = intersectNoNull(end1, end2, normedAxis1, normedAxis2, plane);
             double dist1 = Math.abs(intersect[0] / axis1.length());
             double dist2 = Math.abs(intersect[1] / axis2.length());
 
@@ -219,6 +213,8 @@ public class Methods {
         if (!parallel) {
             float absAngle = Math.abs(AngleHelper.deg(angle));
             intersect = VecHelper.intersect(end1, end2, normedAxis1, normedAxis2, Direction.Axis.Y);
+            if(intersect == null)
+                intersect = intersectNoNull(end1, end2, normedAxis1, normedAxis2, Direction.Axis.Y);
             double dist1 = Math.abs(intersect[0]);
             double dist2 = Math.abs(intersect[1]);
             float ex1 = 0;
@@ -348,5 +344,30 @@ public class Methods {
             AllAdvancements.LONG_BEND.awardTo(player);
 
         return TrackPlacementAccessor.invokePlaceTracks(level, info, state1, state2, targetPos1, targetPos2, false);
+    }
+    public static double[] intersectNoNull(Vec3 p1, Vec3 p2, Vec3 r, Vec3 s, Axis plane) {
+        if (plane == Axis.X) {
+            p1 = new Vec3(p1.y, 0, p1.z);
+            p2 = new Vec3(p2.y, 0, p2.z);
+            r = new Vec3(r.y, 0, r.z);
+            s = new Vec3(s.y, 0, s.z);
+        }
+
+        if (plane == Axis.Z) {
+            p1 = new Vec3(p1.x, 0, p1.y);
+            p2 = new Vec3(p2.x, 0, p2.y);
+            r = new Vec3(r.x, 0, r.y);
+            s = new Vec3(s.x, 0, s.y);
+        }
+
+        Vec3 qminusp = p2.subtract(p1);
+        double rcs = r.x * s.z - r.z * s.x;
+        if (Mth.equal(rcs, 0))
+            return null;
+        Vec3 rdivrcs = r.scale(1 / rcs);
+        Vec3 sdivrcs = s.scale(1 / rcs);
+        double t = qminusp.x * sdivrcs.z - qminusp.z * sdivrcs.x;
+        double u = qminusp.x * rdivrcs.z - qminusp.z * rdivrcs.x;
+        return new double[] { t, u };
     }
 }
